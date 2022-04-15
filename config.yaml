@@ -1,0 +1,18 @@
+# 运行环境：dev / prod
+ENV: dev
+
+# 服务端IP和端口
+SERVER:
+  HOST: 0.0.0.0
+  PORT: 8080
+
+# HTTPS
+SSL:
+  # 证书路径
+  CERT: path/xxx
+  KEY: path/xxx
+
+# 微信小程序
+WEIXIN:
+  APPID: xxxxxx
+  SECRET: xxxxxx
