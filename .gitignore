@@ -127,3 +127,5 @@ dmypy.json
 venv
 
 *.pem
+.vscode/
+logs/

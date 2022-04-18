@@ -1,46 +1,41 @@
-import json
+from flask import Flask
+from werkzeug.exceptions import HTTPException
 
-import yaml
-import requests
-from flask import Flask, request
+import api
+import database
+import log
+from exceptions import APIException, ServerError, UnknownError
+from utils import read_yaml
 
 
 app = Flask(__name__)
+app.config.update(read_yaml('config.yaml'))
+log.init_app(app)
+database.init_app(app)
+app.register_blueprint(api.bp) # 注册蓝图（注册路由）
+
+
+# 异常处理
+@app.errorhandler(Exception)
+def framework_error(e):
+    app.logger.error(e)
+    if isinstance(e, APIException):
+        return e
+    if isinstance(e, HTTPException):
+        return ServerError(msg=e.description)
+    else:
+        return UnknownError(msg=str(e))
 
 
 @app.route("/")
 def index():
+    app.logger.info("hello world!")
     return "hello world!"
 
 
-@app.route("/api/weixin/get_openid", methods=['GET'])
-def get_openid():
-    appid = app.config["WEIXIN"]["APPID"]
-    secret = app.config["WEIXIN"]["SECRET"]
-    code = request.args.get('code')
-    url = f"https://api.weixin.qq.com/sns/jscode2session?appid={appid}&secret={secret}&js_code={code}&grant_type=authorization_code"
-    rsp = requests.get(url)
-    data = json.loads(rsp.text)
-    app.logger.debug(data)
-    return {
-        "openid": data["openid"]
-    }
-
-
-def read_yaml(path):
-    with open(path, 'rb') as f:
-        y = yaml.load(f.read(), Loader=yaml.FullLoader)
-    return y
-
-
 if __name__ == "__main__":
-    app.config.update(read_yaml('config.yaml'))
     app.run(
         host=app.config["SERVER"]["HOST"],
         port=app.config["SERVER"]["PORT"],
-        debug=True,
-        ssl_context=(
-            app.config["SSL"]["CERT"],
-            app.config["SSL"]["KEY"]
-        )
+        debug=True
     )
