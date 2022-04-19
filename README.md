@@ -7,7 +7,7 @@
 环境：
 
 - python >= 3.7
-- MySQL
+- MySQL 8.0
 
 代码规范：[PEP8](https://peps.python.org/pep-0008)
 
@@ -19,9 +19,21 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 修改配置文件：`./config.yaml`
 
+数据库迁移：
+
+```bash
+flask db migrate
+flask db upgrade
+```
+
 运行:
 
 ```bash
+export FLASK_ENV=development # windows: set FLASK_ENV=development
+flask run
+
+# or
+
 python app.py
 ```
 

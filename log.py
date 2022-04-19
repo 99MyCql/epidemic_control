@@ -24,7 +24,7 @@ def init_app(app : Flask):
 
     # 配置输出格式
     formatter = logging.Formatter("[%(asctime)s][%(module)s:%(lineno)d]" \
-        "[%(levelname)s][%(thread)d] - %(message)s")
+        "[%(levelname)s] - %(message)s")
     handler.setFormatter(formatter)
 
     # 配置日志等级

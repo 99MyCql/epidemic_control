@@ -21,7 +21,7 @@ LOG:
   # 日志等级：CRITICAL > ERROR > WARNING > INFO > DEBUG > NOTSET
   LEVEL: DEBUG
   # 输出目标：console file
-  OUTPUT: file
+  OUTPUT: console
   # 若输出到文件，配置日志文件所在目录
   DIR: ./logs/
   # 日志文件的最大字节数

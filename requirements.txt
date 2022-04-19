@@ -1,3 +1,4 @@
+alembic==1.7.7
 aniso8601==9.0.1
 astroid==2.11.2
 certifi==2021.10.8
@@ -6,6 +7,7 @@ click==8.1.2
 colorama==0.4.4
 dill==0.3.4
 Flask==2.1.1
+Flask-Migrate==3.1.0
 Flask-RESTful==0.3.9
 Flask-SQLAlchemy==2.5.1
 greenlet==1.1.2
@@ -15,6 +17,7 @@ isort==5.10.1
 itsdangerous==2.1.2
 Jinja2==3.1.1
 lazy-object-proxy==1.7.1
+Mako==1.2.0
 MarkupSafe==2.1.1
 mccabe==0.7.0
 platformdirs==2.5.1
