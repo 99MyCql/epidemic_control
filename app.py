@@ -3,11 +3,11 @@ from flask import Flask
 import api
 import database
 import log
-from utils import read_yaml
 
 
 app = Flask(__name__)
-app.config.update(read_yaml('config.yaml'))
+app.config.from_pyfile("config.py") # 默认配置文件
+app.config.from_envvar("CONFIG_FILE") # 重载的配置文件，通过环境变量 CONFIG_FILE 导入
 log.init_app(app)
 database.init_app(app)
 app.register_blueprint(api.bp) # 注册蓝图（注册路由）
@@ -20,8 +20,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(
-        host=app.config["SERVER"]["HOST"],
-        port=app.config["SERVER"]["PORT"],
-        debug=True
-    )
+    app.run(debug=True)

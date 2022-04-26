@@ -1,5 +1,7 @@
-#!/bin/bash
 # 部署脚本
+#!/bin/bash
+
+set -uex
 
 . venv/bin/activate
 

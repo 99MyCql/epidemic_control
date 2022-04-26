@@ -49,6 +49,18 @@ class InvalidParam(APIException):
     err_name = "Invalid Parameter"
 
 
+class NotLogin(APIException):
+    code = 400
+    err_code = 400002
+    err_name = "Not Login"
+
+
+class AlreadyExist(APIException):
+    code = 400
+    err_code = 400003
+    err_name = "Already Exist"
+
+
 class ServerError(APIException):
     code = 500
     err_code = 500000

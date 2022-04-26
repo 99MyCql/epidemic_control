@@ -17,7 +17,12 @@
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-修改配置文件：`./config.yaml`
+修改默认配置文件 `./config.py` ，或者自定义配置文件（格式参照config.py），并通过环境变量 `CONFIG_FILE` 指定：
+
+```bash
+# windows: set CONFIG_FILE=config_dev.py
+export CONFIG_FILE=config_dev.py
+```
 
 数据库迁移：
 
@@ -29,16 +34,15 @@ flask db upgrade
 运行:
 
 ```bash
-export FLASK_ENV=development # windows: set FLASK_ENV=development
+# windows: set FLASK_ENV=development
+export FLASK_ENV=development
+
+# flask run -p 8080
 flask run
-
-# or
-
-python app.py
 ```
 
-## Changelog
+or
 
-### Unreleased
-
-- 获取微信openid
+```bash
+python app.py
+```

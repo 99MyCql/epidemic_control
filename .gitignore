@@ -129,3 +129,4 @@ venv
 *.pem
 .vscode/
 logs/
+config_dev.py
