@@ -7,7 +7,7 @@ import log
 
 app = Flask(__name__)
 app.config.from_pyfile("config.py") # 默认配置文件
-app.config.from_envvar("CONFIG_FILE") # 重载的配置文件，通过环境变量 CONFIG_FILE 导入
+app.config.from_envvar("CONFIG_FILE", silent=True) # 重载的配置文件，通过环境变量 CONFIG_FILE 导入（可不设）
 log.init_app(app)
 database.init_app(app)
 app.register_blueprint(api.bp) # 注册蓝图（注册路由）
