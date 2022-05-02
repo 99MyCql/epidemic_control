@@ -61,6 +61,18 @@ class AlreadyExist(APIException):
     err_name = "Already Exist"
 
 
+class DuplicateField(APIException):
+    code = 400
+    err_code = 400004
+    err_name = "Duplicate Field"
+
+
+class NotExist(APIException):
+    code = 400
+    err_code = 400005
+    err_name = "Not Exist"
+
+
 class ServerError(APIException):
     code = 500
     err_code = 500000
