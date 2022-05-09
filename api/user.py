@@ -9,7 +9,7 @@ from models.user import User
 from exceptions import ServerError
 
 
-bp = Blueprint("user", __name__, url_prefix="/user")
+bp = Blueprint("user", __name__, url_prefix="/users")
 
 login_parser = reqparse.RequestParser()
 login_parser.add_argument("code", type=str, required=True, location="args")

@@ -73,6 +73,18 @@ class NotExist(APIException):
     err_name = "Not Exist"
 
 
+class Unauthorized(APIException):
+    code = 401
+    err_code = 401000
+    err_name = "Unauthorized"
+
+
+class Forbidden(APIException):
+    code = 403
+    err_code = 403000
+    err_name = "Forbidden"
+
+
 class ServerError(APIException):
     code = 500
     err_code = 500000

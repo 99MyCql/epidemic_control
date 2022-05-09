@@ -14,7 +14,7 @@ bp.register_blueprint(organization.bp)
 # 异常处理
 @bp.errorhandler(Exception)
 def error_handler(e):
-    current_app.logger.error(e)
+    current_app.logger.exception(e)
     if isinstance(e, APIException):
         return e
     if isinstance(e, HTTPException):
